@@ -3,18 +3,18 @@ namespace PDFReport\Data;
 
 class BaseData {
 
-	/** @var Traversable  */
+	/** @var \Traversable  */
 	protected $columns = null;
 
-	/** @var Traversable */
+	/** @var \Traversable */
 	protected $data = null;
 
 	/** @var array|null */
 	protected $current_row = null;
 	
 	/**
-	 * @param Traversable|array $data
-	 * @param Traversable|array $columns
+	 * @param \Traversable|array $data
+	 * @param \Traversable|array $columns
 	 */
 	public function __construct( $data, $columns ) {
 		$this->set_data( $data );
@@ -22,14 +22,14 @@ class BaseData {
 	}
 
 	/**
-	 * @return Traversable
+	 * @return \Traversable
 	 */
 	public function get_data() {
 		return $this->data;
 	}
 
 	/**
-	 * @param Traversable $data
+	 * @param \Traversable $data
 	 *
 	 * @return $this
 	 */
@@ -40,14 +40,14 @@ class BaseData {
 	}
 
 	/**
-	 * @return Traversable
+	 * @return \Traversable
 	 */
 	public function get_columns() {
 		return $this->columns;
 	}
 
 	/**
-	 * @param Traversable $columns
+	 * @param \Traversable $columns
 	 *
 	 * @return $this
 	 */
