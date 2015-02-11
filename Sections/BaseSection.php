@@ -74,7 +74,7 @@ abstract class BaseSection {
 	}
 
 	/**
-	 * @param $font FontSpec
+	 * @param FontSpec $font
 	 *
 	 * @return $this
 	 */
@@ -151,15 +151,19 @@ abstract class BaseSection {
 					$height = $pdf->output_line( $this_field );
 					break;
 
+				case FieldTypes::Page_Break:
+					$height = $this_field->get_output( $pdf );
+					break;
 			}
-
+			
 			// Update max height for this row
 			if ( $height > $row_height ) {
 				$row_height = $height;
 			}
 
-			// Are we moving to a new line? 
-			if ( 0 != $this_field->get_ln() ) {
+			// Are we moving to a new line?
+			// ToDo: The height logic is getting messy, this could use a re-think
+			if ( 0 != $this_field->get_ln() || FieldTypes::Page_Break == $this_field->get_type() ) {
 
 				$total_height += $row_height;
 				$row_height = 0;

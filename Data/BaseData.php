@@ -3,10 +3,10 @@ namespace PDFReport\Data;
 
 class BaseData {
 
-	/** @var \Traversable  */
+	/** @var \Traversable|array  */
 	protected $columns = null;
 
-	/** @var \Traversable */
+	/** @var \Traversable|array */
 	protected $data = null;
 
 	/** @var array|null */
@@ -56,10 +56,16 @@ class BaseData {
 
 		return $this;
 	}
+	
+	public function get_row_count() {
+		
+		return count( $this->data );
+	}
+	
 	/**
 	 * @return array|null
 	 */
-	public function get_row(){
+	public function get_row() {
 		return $this->current_row;
 	}
 
