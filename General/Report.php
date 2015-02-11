@@ -361,7 +361,10 @@ class Report extends \TCPDF {
 		
 		$width = ( 0 === $field->get_width() ) ? 0 : $this->GetStringWidth( $output );
 		$field->set_width( $width );
-		$field->set_height( $this->getStringHeight( $field->get_width(), $output ) );
+
+		if ( 0 == $field->get_height() ) {
+			$field->set_height( $this->getStringHeight( $field->get_width(), $output ) );	
+		}		
 
 		$this->Cell( $field->get_width(), $field->get_height(), $output, $field->get_border(), $field->get_ln(), $field->get_align(), $field->get_fill() );
 
