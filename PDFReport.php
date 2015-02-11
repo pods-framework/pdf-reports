@@ -35,7 +35,10 @@ spl_autoload_register(
 
 		$path = PLUGIN_DIR . str_replace( '\\', DIRECTORY_SEPARATOR, $cls ) . '.php';
 
-		require_once( $path );
+		// ToDo: Should any action be taken for class files that cannot be found? 
+		if ( file_exists( $path ) ) {
+			require_once( $path );	
+		}		
 	}
 );
 
