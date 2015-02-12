@@ -27,6 +27,7 @@ abstract class BaseField {
 			'border' => '',
 			'ln'     => 0,
 			'align'  => '',
+			'valign' => 'M',
 			'fill'   => false
 		);
 		
@@ -190,6 +191,24 @@ abstract class BaseField {
 	 */
 	public function set_align( $align ) {
 		$this->params[ 'align' ] = $align;
+
+		return $this;
+	}
+
+	/**
+	 * @return string text Vertical alignment inside the cell. Possible values are:<ul><li>T : top</li><li>C : center</li><li>B : bottom</li></ul>
+	 */
+	public function get_valign() {
+		return $this->params[ 'valign' ];
+	}
+
+	/**
+	 * @param string $align text Vertical alignment inside the cell. Possible values are:<ul><li>T : top</li><li>C : center</li><li>B : bottom</li></ul>
+	 *
+	 * @return $this
+	 */
+	public function set_valign( $align ) {
+		$this->params[ 'valign' ] = $align;
 
 		return $this;
 	}

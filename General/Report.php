@@ -366,7 +366,7 @@ class Report extends \TCPDF {
 			$field->set_height( $this->getStringHeight( $field->get_width(), $output ) );	
 		}		
 
-		$this->Cell( $field->get_width(), $field->get_height(), $output, $field->get_border(), $field->get_ln(), $field->get_align(), $field->get_fill() );
+		$this->Cell( $field->get_width(), $field->get_height(), $output, $field->get_border(), $field->get_ln(), $field->get_align(), $field->get_fill(), '', 0, false, 'T', $field->get_valign() );
 
 		return $field->get_height();
 	}
