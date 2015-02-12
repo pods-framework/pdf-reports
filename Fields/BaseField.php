@@ -1,6 +1,7 @@
 <?php
 namespace PDFReport\Fields;
 
+use PDFReport\General\FontSpec;
 use PDFReport\General\Report;
 
 // ToDo: Filter(s) for output formatting
@@ -23,7 +24,9 @@ abstract class BaseField {
 		$defaults =  array(
 			'type'   => FieldTypes::MultiCell,
 			'width'  => self::DEFAULT_WIDTH,
-			'height' => 0,
+			'height' => 0.0,
+			'x'      => 0.0,
+			'y'      => 0.0,
 			'border' => '',
 			'ln'     => 0,
 			'align'  => '',
@@ -64,7 +67,7 @@ abstract class BaseField {
 	 * @return float Cell height. Default value: 0.
 	 */
 	public function get_height() {
-		return $this->params[ 'height' ];
+		return (float) $this->params[ 'height' ];
 	}
 
 	/**
@@ -74,6 +77,44 @@ abstract class BaseField {
 	 */
 	public function set_height( $height ) {
 		$this->params[ 'height' ] = $height;
+
+		return $this;
+	}
+
+	/**
+	 * @return float x position in user units
+	 */
+	public function get_x () {
+		
+		return (float) $this->params[ 'x' ];
+	}
+
+	/**
+	 * @param float $new_x x position in user units
+	 *
+	 * @return $this
+	 */
+	public function set_x ( $new_x ) {
+		$this->params[ 'x' ] = $new_x;
+		
+		return $this;
+	}
+
+	/**
+	 * @return float y position in user units
+	 */
+	public function get_y () {
+
+		return (float) $this->params[ 'y' ];
+	}
+
+	/**
+	 * @param float $new_y y position in user units
+	 *
+	 * @return $this
+	 */
+	public function set_y ( $new_y ) {
+		$this->params[ 'y' ] = $new_y;
 
 		return $this;
 	}

@@ -380,9 +380,16 @@ class Report extends \TCPDF {
 
 		$output = $field->get_output( $this );
 
+		$width = $field->get_width();
 		$height = $this->getStringHeight( $field->get_width(), $output );
-
-		$this->MultiCell( $field->get_width(), $height, $output, $field->get_border(), $field->get_align(), $field->get_fill(), $field->get_ln() );
+		$x = ( 0 != $field->get_x() ) ? $field->get_x() : '';
+		$y = ( 0 != $field->get_y() ) ? $field->get_y() : '';
+		$border = $field->get_border();
+		$align = $field->get_align();
+		$fill = $field->get_fill();
+		$ln = $field->get_ln();
+		
+		$this->MultiCell( $width, $height, $output, $border, $align, $fill, $ln, $x, $y );
 
 		return $height;
 	}
